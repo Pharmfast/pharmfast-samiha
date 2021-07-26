@@ -1,7 +1,10 @@
-
+import Login from "./screens/Login";
+import React from "react";
 function App() {
   return (
-    <h1>Let's build new stuff</h1>
+    <div>
+      <Login/>
+    </div>
   );
 }
 
