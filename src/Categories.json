@@ -1,0 +1,22 @@
+{
+    "category": {
+        "1": {
+            "name": "Order Medicines",
+            "buttonname": "Order Now",
+            "offername": "15",
+            "categoryimage": "https://assets.pharmeasy.in/web-assets/dist/7c645a8d.png"
+        },
+        "2": {
+            "name": "Healthcare Products",
+            "buttonname": "Order Now",
+            "offername": "60",
+            "categoryimage": "https://assets.pharmeasy.in/web-assets/dist/c7c7095b.png"
+        },
+        "3": {
+            "name": "Lab Tests",
+            "buttonname": "Book Now",
+            "offername": "70",
+            "categoryimage": "https://assets.pharmeasy.in/web-assets/dist/e1d3ac1c.png"
+        }
+    }
+}
