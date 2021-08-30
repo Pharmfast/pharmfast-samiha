@@ -8,7 +8,7 @@ function Header() {
         <header>
             {/* Top nav */}
             <div className="bg-red-500 flex items-center p-1 flex-grow py-2">
-                <div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
+                <div onClick={() => history.push("/home")} className="mt-2 flex items-center cursor-pointer flex-grow sm:flex-grow-0">
                     <img 
                     className="w-36 m-2 mr-4 h-12 object-contain"
                     src="https://assets.pharmeasy.in/web-assets/dist/fca22bc9.png" 
@@ -55,13 +55,13 @@ function Header() {
                     <MenuIcon className="h-6 mr-1"/>
                     All
                 </p>
-                <p className="hidden sm:flex cursor-pointer hover:underline">
+                <p onClick={() => history.push("/medicine")} className="hidden sm:flex cursor-pointer hover:underline">
                     Order Medicine
                 </p>
-                <p className="hidden sm:flex cursor-pointer hover:underline">
+                <p onClick={() => history.push("/healthcare")} className="hidden sm:flex cursor-pointer hover:underline">
                     Healthcare Products
                 </p>
-                <p className="hidden sm:flex cursor-pointer hover:underline">
+                <p onClick={() => history.push("/labtest")} className="hidden sm:flex cursor-pointer hover:underline">
                     Diagnostic Tests
                 </p>
                 <p className="hidden sm:flex cursor-pointer hover:underline">

@@ -9,7 +9,13 @@ function Home() {
     return (
         <div>
             <Header/>
-            <Banner/>
+            <Banner
+            banner1="https://cms-contents.pharmeasy.in/banner/884efe4f231-20EXTRADWEB.jpg?dim=1440x0&dpr=1&q=100"
+            banner2="https://cms-contents.pharmeasy.in/banner/341dc9245c2-SURP15DWEB.jpg?dim=1440x0&dpr=1&q=100"
+            banner3="https://cms-contents.pharmeasy.in/banner/9e172a2bf75-prioritydweb.jpg?dim=1440x0&dpr=1&q=100"
+            banner4="https://cms-contents.pharmeasy.in/banner/ed7c9757352-Dweb-size.jpg?dim=1440x0&dpr=1&q=100"
+            />
+            
             <div className="flex justify-evenly">
                 <Category 
                 title="Order Medicines"

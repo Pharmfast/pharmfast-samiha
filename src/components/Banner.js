@@ -1,7 +1,7 @@
 import React from 'react';
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-function Banner() {
+function Banner({banner1, banner2, banner3, banner4}) {
     return (
         <div className="relative z-0">
             <Carousel
@@ -13,19 +13,19 @@ function Banner() {
             interval={5000}
             >
                 <div>
-                    <img loading="lazy" src="https://cms-contents.pharmeasy.in/banner/884efe4f231-20EXTRADWEB.jpg?dim=1440x0&dpr=1&q=100" alt=""/>
+                    <img loading="lazy" src={banner1} alt=""/>
                 </div>
 
                 <div>
-                    <img loading="lazy" src="https://cms-contents.pharmeasy.in/banner/341dc9245c2-SURP15DWEB.jpg?dim=1440x0&dpr=1&q=100" alt=""/>
+                    <img loading="lazy" src={banner2} alt=""/>
                 </div>
 
                 <div>
-                    <img loading="lazy" src="https://cms-contents.pharmeasy.in/banner/9e172a2bf75-prioritydweb.jpg?dim=1440x0&dpr=1&q=100" alt=""/>
+                    <img loading="lazy" src={banner3} alt=""/>
                 </div>
 
                 <div>
-                    <img loading="lazy" src="https://cms-contents.pharmeasy.in/banner/ed7c9757352-Dweb-size.jpg?dim=1440x0&dpr=1&q=100" alt=""/>
+                    <img loading="lazy" src={banner4} alt=""/>
                 </div>
             </Carousel>
         </div>
