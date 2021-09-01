@@ -3,13 +3,13 @@ import Drawer from "react-modern-drawer";
 import 'react-modern-drawer/dist/index.css';
 import { useDispatch } from 'react-redux';
 
-function AllTestsComponent({id, name, availablelab, price, toggleDrawer, isOpen, enterAlltest }) {
+function AllTestsComponent({ fetchLab,_id, name, availablelab, price, toggleDrawer, isOpen, enterAlltest, removeFromCart }) {
     const dispatch = useDispatch();
 
     const selectAllTests = () => {
-        if(id) {
+        if(_id) {
             dispatch(enterAlltest({
-                alltestId: id
+                alltestId: _id
             }));
         }
     }
@@ -26,7 +26,10 @@ function AllTestsComponent({id, name, availablelab, price, toggleDrawer, isOpen,
                 <h1 className="hidden xl:flex mt-16 pt-3 font-semibold text-gray-400 text-sm xl:mt-0 xl:font-semibold">Available at{availablelab} Certified Lab</h1>
                 <h1 className="hidden xl:flex mt-16 pt-3 font-semibold text-gray-600 text-sm xl:mt-0 xl:font-semibold xl:space-x-2">₹{price} <span className="text-gray-400 space-x-2">onwards</span></h1>
             </div>
-            <button onClick={toggleDrawer} className="xl:p-2 xl:pl-9 xl:pr-9 xl:bg-red-500 xl:rounded-lg xl:outline-none xl:text-white ">Select</button>
+            <button onClick={() => fetchLab(_id)} 
+             className="xl:p-2 xl:pl-9 xl:pr-9 xl:bg-red-500 xl:rounded-lg xl:outline-none xl:text-white ">Select</button>
+             <button onClick={() => removeFromCart(_id)} 
+             className="xl:p-2 xl:pl-9 xl:pr-9 xl:bg-red-500 xl:rounded-lg xl:outline-none xl:text-white ">Remove</button>
         </div>
     )
 }
