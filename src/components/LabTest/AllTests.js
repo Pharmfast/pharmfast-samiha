@@ -141,7 +141,7 @@ function AllTests() {
     console.log(cart)
     return (
         <div>
-            <Header/>
+            <Header cartDetails={cartDetails}/>
             <div className="flex justify-between m-32 xl:ml-28 mt-14 xl:mb-3 xl:mr-96 xl:pr-20 font-bold text-gray-600">
                 <h1 className="text-2xl">Lab Tests</h1>
                 <h1 className="text-xl">10 Tests</h1>
