@@ -92,7 +92,7 @@ function AllTests() {
 
     const getCart = () => {
         let localCart = JSON.parse(localStorage.getItem("cart"))
-        if(localCart.length > 0) {
+        if(localCart?.length > 0) {
             let totalItems = 0;
             let totalPrice = 0;
             setCart(localCart)
@@ -102,7 +102,9 @@ function AllTests() {
             })
             setCartDetails({totalItems, totalPrice})
         } else {
-            setCart([])
+            localCart = []
+            setCart(localCart)
+            localStorage.setItem("cart", JSON.stringify(localCart))
         }
     }
 
