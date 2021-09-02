@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Header from "../Header";
 import { BiCart } from 'react-icons/bi';
+import { GrTest } from 'react-icons/gr';
+import { RiArrowDropRightLine } from 'react-icons/ri';
 import { useHistory } from 'react-router-dom';
+import Header from "../Header";
 
 function Cart() {
     const history = useHistory();
@@ -52,20 +54,30 @@ function Cart() {
     return (
         <div>
             <Header cartDetails={cartDetails} />
-            <h1 className="font-bold">Cart</h1>
-            {cart?.map(({ lab: { labname }, singleTest: {_id, name, price } }) => (
-                <div className="flex justify-between border-b-2 border-dashed py-4">
-                    <h2 className="text-gray-500 mr-2" >{name} in {labname} </h2>
-                    <h2 className="text-gray-700 font-semibold" >&#8377;{price}</h2>
-                    <button className="px-8" onClick={() => removeFromCart(_id)}>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                        </svg>
-                    </button>
+            <div className="flex xl:flex-row flex-col mx-2 xl:mx-32 my-2 xl:my-5 justify-between" >
+                <div className="xl:w-3/5 w-full" >
+                    <h1 className="font-semibold border-b-2 pb-2 text-xl xl:text-3xl text-gray-600">Cart</h1>
+                    {cart?.map(({ lab: { labname }, singleTest: { _id, name, price } }) => (
+                        <div className="flex justify-between border-2 py-8 px-3 rounded-lg mt-3">
+                            <div className="flex items-center" >
+                                <GrTest className="text-green-600 mr-2" />
+                                <h2 className="text-gray-500 mr-2" >{name} in {labname} </h2>
+                            </div>
+                            <div className="flex" >
+                                <h2 className="text-gray-700 font-semibold" >&#8377;{price}</h2>
+                                <button className="px-8" onClick={() => removeFromCart(_id)}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-            ))}
 
-            <div className="flex flex-col mt-16">
+                <div className="flex flex-col xl:mt-16 mb-16 xl:mb-0 mx-2 ">
+
+                    <div className="flex items-center justify-between text-red-500 border rounded-md p-2 mb-5 cursor-pointer border-red-500" > <h1 className="font-bold" >Apply Coupon</h1> <RiArrowDropRightLine className="text-3xl" /> </div>
 
                     <h1 className="text-gray-500 border-b-2 pb-3" >Order Summary</h1>
 
@@ -82,6 +94,7 @@ function Cart() {
                         <h3 className="font-bold text-gray-700" >&#8377;{cartDetails.totalPrice || '0'}</h3>
                     </div>
                     <button onClick={() => history.push("/cart", cartDetails)} className="bg-red-500 text-white rounded-md p-2 mt-3" >View Cart</button>
+                </div>
             </div>
         </div>
     )
