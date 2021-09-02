@@ -34,7 +34,7 @@ function Header({ cartDetails }) {
                     <div onClick={() => history.replace('/')} className="cursor-pointer hover:underline">
                         <p className="font-extrabold md:text-sm">Hello Sign Up</p>
                     </div>
-                    <div className="cursor-pointer hover:underline items-center flex">
+                    <div onClick={() => history.push("/cart")} className="cursor-pointer hover:underline items-center flex">
                         <span className="absolute top-6 md:top-5 right-3 md:right-11 h-4 w-4 bg-red-300 rounded-full text-center text-black">{cartDetails.totalItems == null ? 0 : cartDetails.totalItems}</span>
                         <ShoppingCartIcon className="h-8 lg:h-10"/>
                         <p className="font-extrabold hidden sm:flex md:text-sm mt-2">Cart</p>

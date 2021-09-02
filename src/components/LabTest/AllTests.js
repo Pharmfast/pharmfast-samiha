@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { db } from '../../firebase';
-import Header from "../Header";
-import AllTestsComponent from './AllTestsComponent';
-import 'react-modern-drawer/dist/index.css';
-import Drawer from "react-modern-drawer";
-import { enterAlltest, selectAlltestId } from "../../features/allltestSlice";
-import { useSelector } from 'react-redux';
-import CertificationLab from './CertificationLab';
 // import Axios from ".../axios.js"
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { BiCart } from 'react-icons/bi';
+import Drawer from "react-modern-drawer";
+import 'react-modern-drawer/dist/index.css';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { enterAlltest, selectAlltestId } from "../../features/allltestSlice";
+import Header from "../Header";
+import AllTestsComponent from './AllTestsComponent';
+import CertificationLab from './CertificationLab';
 
 function AllTests() {
+    const history = useHistory();
+
     const [tests, setTests] = useState([]);
     const [lab, setLab] = useState([]);
     const [singleTest, setSingleTest] = useState({})
@@ -20,27 +23,27 @@ function AllTests() {
 
     useEffect(() => {
         axios.get("http://localhost:8000/api/getlabtest")
-        .then(response => {
-            console.log(response.data)
-            setTests(response.data)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    },[]);
+            .then(response => {
+                console.log(response.data)
+                setTests(response.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, []);
 
-    const addToCart = ({_id, labname, price}) => {
+    const addToCart = ({ _id, labname, price }) => {
         let flag = 0;
         let localCart = JSON.parse(localStorage.getItem("cart"))
-        if(cart.length > 0) {
+        if (cart.length > 0) {
             localCart.forEach(item => {
-                if(item.singleTest["_id"] == singleTest["_id"]) {
+                if (item.singleTest["_id"] == singleTest["_id"]) {
                     flag = 1;
                 }
             })
-            if(flag) {
+            if (flag) {
                 console.log("Already added in the cart")
-                return 
+                return
             }
             const item = {
                 singleTest,
@@ -74,15 +77,15 @@ function AllTests() {
 
     const removeFromCart = (id) => {
         let localCart = JSON.parse(localStorage.getItem("cart"))
-        if(localCart.length > 0) {
+        if (localCart.length > 0) {
             let cartPrice = cartDetails.totalPrice
             cartPrice = localCart.forEach(item => {
-                if(item.singleTest["_id"] == id) {
+                if (item.singleTest["_id"] == id) {
                     cartPrice -= parseFloat(item.singleTest.price)
                 }
             })
             let cartItems = cartDetails.totalItems - 1;
-            setCartDetails({totalItems: cartItems, totalPrice: cartPrice })
+            setCartDetails({ totalItems: cartItems, totalPrice: cartPrice })
             localCart = localCart.filter(t => t.singleTest["_id"] != id)
             setCart(localCart)
             localStorage.setItem("cart", JSON.stringify(localCart))
@@ -92,7 +95,7 @@ function AllTests() {
 
     const getCart = () => {
         let localCart = JSON.parse(localStorage.getItem("cart"))
-        if(localCart?.length > 0) {
+        if (localCart?.length > 0) {
             let totalItems = 0;
             let totalPrice = 0;
             setCart(localCart)
@@ -100,7 +103,7 @@ function AllTests() {
                 totalItems++;
                 totalPrice += parseFloat(item.singleTest.price)
             })
-            setCartDetails({totalItems, totalPrice})
+            setCartDetails({ totalItems, totalPrice })
         } else {
             localCart = []
             setCart(localCart)
@@ -116,21 +119,21 @@ function AllTests() {
         console.log("Hello")
         axios.get(`http://localhost:8000/api/gettest/${_id}`).then(response => {
             console.log(response.data)
-            
+
             setSingleTest(response.data)
         })
-        .catch(err => {
-            console.log(err)
-        })
+            .catch(err => {
+                console.log(err)
+            })
 
         axios.get(`http://localhost:8000/api/getlabs/${_id}`)
-        .then(response => {
-            console.log(response.data)
-            setLab(response.data)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+            .then(response => {
+                console.log(response.data)
+                setLab(response.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
         toggleDrawer()
     }
 
@@ -141,35 +144,49 @@ function AllTests() {
     console.log(cart)
     return (
         <div>
-            <Header cartDetails={cartDetails}/>
-            <div className="flex justify-between m-32 xl:ml-28 mt-14 xl:mb-3 xl:mr-96 xl:pr-20 font-bold text-gray-600">
-                <h1 className="text-2xl">Lab Tests</h1>
-                <h1 className="text-xl">10 Tests</h1>
-            </div>
-            <div className="grid grid-cols-2 m-4 xl:ml-10 xl:mr-96">
-                {tests?.map(({_id, name, description, price}) => (
-                    <AllTestsComponent
-                    key={_id}
-                    _id={_id}
-                    name={name}
-                    availablelab={2}
-                    price={price}
-                    toggleDrawer={toggleDrawer}
-                    isOpen={isOpen}
-                    enterAlltest={enterAlltest}
-                    fetchLab={fetchLab}
-                    removeFromCart={removeFromCart}
-                    />
-                ))}
-            </div>
-            <div className="grid grid-cols- m-4 xl:ml-10 xl:mr-96">
-                <h1>{cartDetails.totalItems} Items in Cart</h1>
-                {cart?.map(({lab: {labname}, singleTest: { name, price}}) => (
-                    <>
-                        <h2>{name} in {labname}   price {price}</h2>
-                    </>
-                ))}
-                <h3>Total {cartDetails.totalPrice}</h3>
+            <Header cartDetails={cartDetails} />
+
+            <div className="flex" >
+                <div>
+                    <div className="flex justify-between m-28 xl:ml-28 mt-14 xl:mb-3 font-bold text-gray-600">
+                        <h1 className="text-2xl">Lab Tests</h1>
+                        <h1 className="text-xl">10 Tests</h1>
+                    </div>
+                    <div className="grid grid-cols-2 m-4 xl:ml-10">
+                        {tests?.map(({ _id, name, description, price }) => (
+                            <AllTestsComponent
+                                key={_id}
+                                _id={_id}
+                                name={name}
+                                availablelab={2}
+                                price={price}
+                                toggleDrawer={toggleDrawer}
+                                isOpen={isOpen}
+                                enterAlltest={enterAlltest}
+                                fetchLab={fetchLab}
+                                removeFromCart={removeFromCart}
+                            />
+                        ))}
+                    </div>
+                </div>
+                <div className="flex flex-col mt-16">
+
+                    <h1 className="text-gray-500 border-b-2 pb-3" >Order Summary</h1>
+
+                    <h1 className="flex items-center gap-5 border-b-2 border-dashed py-3" >  <div className="bg-gray-100 rounded-full p-1" ><BiCart className="text-yellow-400 text-xl " /></div> <h1>{cartDetails.totalItems} Items in Cart</h1></h1>
+
+                    {cart?.map(({ lab: { labname }, singleTest: { name, price } }) => (
+                        <div className="flex justify-between border-b-2 border-dashed py-4">
+                            <h2 className="text-gray-500 mr-2" >{name} in {labname} </h2>
+                            <h2 className="text-gray-700 font-semibold" >&#8377;{price}</h2>
+                        </div>
+                    ))}
+                    <div className="flex items-center justify-between py-3" >
+                        <h3 className="font-semibold text-gray-600" >Total</h3>
+                        <h3 className="font-bold text-gray-700" >&#8377;{cartDetails.totalPrice || '0'}</h3>
+                    </div>
+                    <button onClick={() => history.push("/cart", cartDetails)} className="bg-red-500 text-white rounded-md p-2 mt-3" >View Cart</button>
+                </div>
             </div>
             <Drawer size={450} open={isOpen} onClose={toggleDrawer} direction='right'>
                 <div className="xl:m-12">
@@ -179,15 +196,15 @@ function AllTests() {
                         <h1 className="ml-3">Reliability assured with certified labs</h1>
                     </div>
                     <div className="grid, grid-cols-1">
-                        {lab?.map(({_id ,name, certified }) => (
+                        {lab?.map(({ _id, name, certified }) => (
                             <CertificationLab
-                            key={_id}
-                            id={_id}
-                            image={"https://cdn01.pharmeasy.in/dam/diagnostics/mce/48cc8a22cc6932698b86be1849acf628.png"}
-                            labname={name}
-                            price={singleTest.price}
-                            certification={certified}
-                            addToCart={addToCart}
+                                key={_id}
+                                id={_id}
+                                image={"https://cdn01.pharmeasy.in/dam/diagnostics/mce/48cc8a22cc6932698b86be1849acf628.png"}
+                                labname={name}
+                                price={singleTest.price}
+                                certification={certified}
+                                addToCart={addToCart}
                             />
                         ))}
                     </div>

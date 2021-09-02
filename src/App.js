@@ -10,6 +10,7 @@ import ProductPage from "./components/Products/ProductPage";
 import ProductDetailPage from "./components/Products/ProductDetailPage";
 import AllTests from "./components/LabTest/AllTests";
 import UploadPrescription from "./screens/UploadPrescription";
+import Cart from "./components/Cart/Cart";
 function App() {
   return (
     <div>
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <Route path="/labtest">
             <LabTest/>
+          </Route>
+          <Route path="/cart">
+            <Cart />
           </Route>
           <Route exact path="/">
             <Login/>
