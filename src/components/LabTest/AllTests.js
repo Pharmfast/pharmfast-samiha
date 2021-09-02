@@ -145,11 +145,11 @@ function AllTests() {
 
             <div className="flex" >
                 <div>
-                    <div className="flex justify-between m-28 xl:ml-28 mt-14 xl:mb-3 font-bold text-gray-600">
-                        <h1 className="text-2xl">Lab Tests</h1>
-                        <h1 className="text-xl">10 Tests</h1>
+                    <div className="flex justify-between mt-5 mx-3 xl:m-28 xl:ml-28 xl:mt-14 xl:mb-3 font-bold text-gray-600">
+                        <h1 className="xl:text-2xl">Lab Tests</h1>
+                        <h1 className="xl:text-xl">10 Tests</h1>
                     </div>
-                    <div className="grid grid-cols-2 m-4 xl:ml-10">
+                    <div className="grid grid-cols-2 mb-16 xl:m-4 xl:ml-10">
                         {tests?.map(({ _id, name, description, price }) => (
                             <AllTestsComponent
                                 key={_id}
@@ -166,7 +166,8 @@ function AllTests() {
                         ))}
                     </div>
                 </div>
-                <div className="flex flex-col mt-16">
+
+                {cartDetails.totalItems > 0 ? <div className="flex flex-col mt-16">
 
                     <h1 className="text-gray-500 border-b-2 pb-3" >Order Summary</h1>
 
@@ -183,7 +184,7 @@ function AllTests() {
                         <h3 className="font-bold text-gray-700" >&#8377;{cartDetails.totalPrice || '0'}</h3>
                     </div>
                     <button className="bg-red-500 text-white rounded-md p-2 mt-3" >View Cart</button>
-                </div>
+                </div> : ""}
             </div>
             <Drawer size={450} open={isOpen} onClose={toggleDrawer} direction='right'>
                 <div className="xl:m-12">
