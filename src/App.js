@@ -12,6 +12,7 @@ import AllTests from "./components/LabTest/AllTests";
 import UploadPrescription from "./screens/UploadPrescription";
 import HealthPackages from "./components/AffordableHealthPackages/HealthPackages";
 import HealthCheckPackages from "./components/AffordableHealthPackages/HealthCheckPackages";
+import Cart from "./components/Cart/Cart";
 function App() {
   return (
     <div>
@@ -40,6 +41,9 @@ function App() {
           </Route>
           <Route path="/labtest">
             <LabTest />
+          </Route>
+          <Route path="/cart">
+            <Cart />
           </Route>
           <Route path="/health-check-packages">
             <HealthCheckPackages />

@@ -4,7 +4,6 @@ import Banner from '../components/Banner';
 import Category from '../components/Category';
 import Header from '../components/Header';
 import TestCards from './BookedLabTests/TestCards';
-import TextInfo from './BookedLabTests/TextInfo';
 
 function Home() {
     const history = useHistory();
