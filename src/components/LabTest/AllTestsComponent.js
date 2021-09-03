@@ -2,7 +2,7 @@ import React from 'react';
 import 'react-modern-drawer/dist/index.css';
 import { useDispatch } from 'react-redux';
 
-function AllTestsComponent({ fetchLab, _id, name, availablelab, price, toggleDrawer, isOpen, enterAlltest, removeFromCart }) {
+function AllTestsComponent({ fetchLab, _id, name, availablelab, price, toggleDrawer, isOpen, enterAlltest, removeFromCart, add }) {
     const dispatch = useDispatch();
 
     const selectAllTests = () => {
@@ -14,7 +14,7 @@ function AllTestsComponent({ fetchLab, _id, name, availablelab, price, toggleDra
     }
 
     return (
-        <div className=" 
+        <div onClick={add} className=" 
         cursor-pointer shadow-xl rounded-lg mt-6 m-1 from-red-100 bg-gradient-to-b xl:from-white xl:bg-gradient-to-b
          hover:shadow-lg xl:p-5 xl:m-7 xl:flex xl:justify-between xl:items-center hover:border-red-400 border-2
         ">
