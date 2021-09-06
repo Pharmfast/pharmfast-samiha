@@ -75,7 +75,8 @@ function AllTests() {
         }
     }
 
-    const removeFromCart = (id) => {
+    const removeFromCart = (id, e) => {
+        e.stopPropagation()
         let localCart = JSON.parse(localStorage.getItem("cart"))
         if (localCart.length > 0) {
             let cartPrice = cartDetails.totalPrice
@@ -115,7 +116,8 @@ function AllTests() {
         getCart()
     }, [])
 
-    const fetchLab = (_id) => {
+    const fetchLab = (_id, e) => {
+        e.stopPropagation();
         console.log("Hello")
         axios.get(`http://localhost:8000/api/gettest/${_id}`).then(response => {
             console.log(response.data)
