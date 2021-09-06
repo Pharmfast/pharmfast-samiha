@@ -11,6 +11,7 @@ import ProductDetailPage from "./components/Products/ProductDetailPage";
 import AllTests from "./components/LabTest/AllTests";
 import UploadPrescription from "./screens/UploadPrescription";
 import Cart from "./components/Cart/Cart";
+import Patient from "./components/Patient/Patient";
 function App() {
   return (
     <div>
@@ -42,6 +43,9 @@ function App() {
           </Route>
           <Route path="/cart">
             <Cart />
+          </Route>
+          <Route path="/createPatient">
+            <Patient />
           </Route>
           <Route exact path="/">
             <Login/>
