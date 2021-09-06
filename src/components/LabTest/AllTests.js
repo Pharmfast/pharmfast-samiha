@@ -96,13 +96,13 @@ function AllTests() {
 
     const getCart = () => {
         let localCart = JSON.parse(localStorage.getItem("cart"))
-        if (localCart?.length > 0) {
+        if (localCart?.length > 0 && localCart != null) {
             let totalItems = 0;
             let totalPrice = 0;
             setCart(localCart)
             localCart.forEach(item => {
                 totalItems++;
-                totalPrice += parseFloat(item.singleTest.price)
+                totalPrice += parseFloat(item.singleTest?.price)
             })
             setCartDetails({ totalItems, totalPrice })
         } else {
@@ -178,7 +178,7 @@ function AllTests() {
 
                     <h1 className="flex items-center gap-5 border-b-2 border-dashed py-3" >  <div className="bg-gray-100 rounded-full p-1" ><BiCart className="text-yellow-400 text-xl " /></div> <h1>{cartDetails.totalItems} Items in Cart</h1></h1>
 
-                    {cart?.map(({ lab: { labname }, singleTest: { name, price } }) => (
+                    {cart?.length != null && cart?.map(({ lab: { labname }, singleTest: { name, price } }) => (
                         <div className="flex justify-between border-b-2 border-dashed py-4">
                             <h2 className="text-gray-500 mr-2" >{name} in {labname} </h2>
                             <h2 className="text-gray-700 font-semibold" >&#8377;{price}</h2>

@@ -47,6 +47,9 @@ function App() {
           <Route path="/cart">
             <Cart />
           </Route>
+          <Route path="/createPatient">
+            <Patient />
+          </Route>
           <Route exact path="/">
             <Login />
           </Route>
