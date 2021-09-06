@@ -1,45 +1,48 @@
-import Login from "./screens/Login";
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from "./screens/Home";
-import Medicines from "./screens/Medicines";
-import Healthcare from "./screens/Healthcare";
-import LabTest from "./screens/LabTest";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import BottomNav from "./components/BottomNav";
-import ProductPage from "./components/Products/ProductPage";
-import ProductDetailPage from "./components/Products/ProductDetailPage";
-import AllTests from "./components/LabTest/AllTests";
-import UploadPrescription from "./screens/UploadPrescription";
 import Cart from "./components/Cart/Cart";
-import Patient from "./components/Patient/Patient";
+import AllTests from "./components/LabTest/AllTests";
+import DetailsTest from "./components/LabTest/DetailsTest";
+import ProductDetailPage from "./components/Products/ProductDetailPage";
+import ProductPage from "./components/Products/ProductPage";
+import Healthcare from "./screens/Healthcare";
+import Home from "./screens/Home";
+import LabTest from "./screens/LabTest";
+import Login from "./screens/Login";
+import Medicines from "./screens/Medicines";
+import UploadPrescription from "./screens/UploadPrescription";
 function App() {
   return (
     <div>
       <Router>
         <Switch>
           <Route path="/home">
-            <Home/>
+            <Home />
           </Route>
           <Route path="/medicine">
-            <Medicines/>
+            <Medicines />
           </Route>
           <Route path="/healthcare/product/:id">
-            <ProductDetailPage/>
+            <ProductDetailPage />
           </Route>
           <Route path="/healthcare/product">
-            <ProductPage/>
+            <ProductPage />
           </Route>
           <Route path="/healthcare">
-            <Healthcare/>
+            <Healthcare />
           </Route>
           <Route path="/labtest/upload-prescription">
-            <UploadPrescription/>
+            <UploadPrescription />
           </Route>
           <Route path="/labtest/alltests">
-            <AllTests/>
+            <AllTests />
+          </Route>
+          <Route path="/labtest/testDetail/:name" >
+            <DetailsTest />
           </Route>
           <Route path="/labtest">
-            <LabTest/>
+            <LabTest />
           </Route>
           <Route path="/cart">
             <Cart />
@@ -48,10 +51,10 @@ function App() {
             <Patient />
           </Route>
           <Route exact path="/">
-            <Login/>
+            <Login />
           </Route>
         </Switch>
-        <BottomNav/>
+        <BottomNav />
       </Router>
     </div>
   );

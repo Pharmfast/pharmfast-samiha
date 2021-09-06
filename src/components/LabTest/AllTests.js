@@ -165,6 +165,7 @@ function AllTests() {
                                 enterAlltest={enterAlltest}
                                 fetchLab={fetchLab}
                                 removeFromCart={removeFromCart}
+                                add={() => history.push(`/labtest/testDetail/${name}`)}
                             />
                         ))}
                     </div>
