@@ -26,10 +26,10 @@ function AllTestsComponent({ fetchLab, _id, name, availablelab, price, toggleDra
                 <h1 className="hidden xl:flex mt-16 pt-3 font-semibold text-gray-600 text-sm xl:mt-0 xl:font-semibold xl:space-x-2">₹{price} <span className="text-gray-400 space-x-2">onwards</span></h1>
             </div>
             <div className="flex flex-col" >
-                <button onClick={() => fetchLab(_id)}
-                    className="xl:p-2 xl:pl-9 xl:pr-9 xl:bg-red-500 xl:rounded-lg xl:outline-none xl:text-white ">Select</button>
-                <button onClick={() => removeFromCart(_id)}
-                    className="xl:p-2 xl:pl-9 xl:pr-9 xl:bg-red-500 xl:rounded-lg xl:outline-none xl:text-white mt-5 ">Remove</button>
+                <button onClick={(e) => fetchLab(_id, e)}
+                    className="xl:p-2 xl:pl-9 xl:pr-9 xl:bg-red-500 xl:rounded-lg xl:outline-none xl:text-white hover:bg-red-600 hover:shadow-lg ">Select</button>
+                <button onClick={(e) => removeFromCart(_id, e)}
+                    className="xl:p-2 xl:pl-9 xl:pr-9 xl:bg-red-500 xl:rounded-lg xl:outline-none xl:text-white mt-5 hover:bg-red-600 hover:shadow-lg ">Remove</button>
             </div>
         </div>
     )
