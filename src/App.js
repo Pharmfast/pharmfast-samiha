@@ -6,7 +6,8 @@ import AllTests from "./components/LabTest/AllTests";
 import DetailsTest from "./components/LabTest/DetailsTest";
 import ProductDetailPage from "./components/Products/ProductDetailPage";
 import ProductPage from "./components/Products/ProductPage";
-import Healthcare from "./screens/Healthcare";
+import Patient from "./components/Patient/Patient";
+import Healthcare from "./screens/Healthcare"
 import Home from "./screens/Home";
 import LabTest from "./screens/LabTest";
 import Login from "./screens/Login";
