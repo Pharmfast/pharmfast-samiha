@@ -1,17 +1,20 @@
-import Login from "./screens/Login";
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from "./screens/Home";
-import Medicines from "./screens/Medicines";
-import Healthcare from "./screens/Healthcare";
-import LabTest from "./screens/LabTest";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import BottomNav from "./components/BottomNav";
-import ProductPage from "./components/Products/ProductPage";
-import ProductDetailPage from "./components/Products/ProductDetailPage";
+import Cart from "./components/Cart/Cart";
 import AllTests from "./components/LabTest/AllTests";
+import DetailsTest from "./components/LabTest/DetailsTest";
+import ProductDetailPage from "./components/Products/ProductDetailPage";
+import ProductPage from "./components/Products/ProductPage";
+import Patient from "./components/Patient/Patient";
+import Healthcare from "./screens/Healthcare"
+import Home from "./screens/Home";
+import LabTest from "./screens/LabTest";
+import Login from "./screens/Login";
+import Medicines from "./screens/Medicines";
 import UploadPrescription from "./screens/UploadPrescription";
 import HealthCheckPackages from "./components/AffordableHealthPackages/HealthCheckPackages";
-import Cart from "./components/Cart/Cart";
+// import Cart from "./components/Cart/Cart";
 import CheckOut from "./components/PatientDetails/CheckOut";
 import PatientDetails from "./components/PatientDetails/PatientDetails";
 function App() {
@@ -40,6 +43,9 @@ function App() {
           <Route path="/labtest/alltests">
             <AllTests />
           </Route>
+          <Route path="/labtest/testDetail/:name" >
+            <DetailsTest />
+          </Route>
           <Route path="/labtest">
             <LabTest />
           </Route>
@@ -54,6 +60,9 @@ function App() {
           </Route>
           <Route to='/select-patient-details'>
             <PatientDetails />
+          </Route>
+          <Route path="/createPatient">
+            <Patient />
           </Route>
           <Route exact path="/">
             <Login />

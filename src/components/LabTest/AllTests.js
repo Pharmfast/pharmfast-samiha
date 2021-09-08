@@ -76,7 +76,8 @@ function AllTests() {
         }
     }
 
-    const removeFromCart = (id) => {
+    const removeFromCart = (id, e) => {
+        e.stopPropagation()
         let localCart = JSON.parse(localStorage.getItem("cart"))
         if (localCart.length > 0) {
             let cartPrice = cartDetails.totalPrice
@@ -96,13 +97,13 @@ function AllTests() {
 
     const getCart = () => {
         let localCart = JSON.parse(localStorage.getItem("cart"))
-        if (localCart?.length > 0) {
+        if (localCart?.length > 0 && localCart != null) {
             let totalItems = 0;
             let totalPrice = 0;
             setCart(localCart)
             localCart.forEach(item => {
                 totalItems++;
-                totalPrice += parseFloat(item.singleTest.price)
+                totalPrice += parseFloat(item.singleTest?.price)
             })
             setCartDetails({ totalItems, totalPrice })
         } else {
@@ -116,7 +117,8 @@ function AllTests() {
         getCart()
     }, [])
 
-    const fetchLab = (_id) => {
+    const fetchLab = (_id, e) => {
+        e.stopPropagation();
         console.log("Hello")
         axios.get(`http://localhost:8000/api/gettest/${_id}`).then(response => {
             console.log(response.data)
@@ -166,6 +168,7 @@ function AllTests() {
                                 enterAlltest={enterAlltest}
                                 fetchLab={fetchLab}
                                 removeFromCart={removeFromCart}
+                                add={() => history.push(`/labtest/testDetail/${name}`)}
                             />
                         ))}
                     </div>
@@ -176,7 +179,7 @@ function AllTests() {
 
                     <h1 className="flex items-center gap-5 border-b-2 border-dashed py-3" >  <div className="bg-gray-100 rounded-full p-1" ><BiCart className="text-yellow-400 text-xl " /></div> <h1>{cartDetails.totalItems} Items in Cart</h1></h1>
 
-                    {cart?.map(({ lab: { labname }, singleTest: { name, price } }) => (
+                    {cart?.length != null && cart?.map(({ lab: { labname }, singleTest: { name, price } }) => (
                         <div className="flex justify-between border-b-2 border-dashed py-4">
                             <h2 className="text-gray-500 mr-2" >{name} in {labname} </h2>
                             <h2 className="text-gray-700 font-semibold" >&#8377;{price}</h2>

@@ -3,6 +3,7 @@ import { BiCart } from 'react-icons/bi';
 import { GrTest } from 'react-icons/gr';
 import { RiArrowDropRightLine } from 'react-icons/ri';
 import { useHistory } from 'react-router-dom';
+import { authenticate, isAuthenticated, signin } from '../../auth/helper';
 import Header from "../Header";
 
 function Cart() {
@@ -51,6 +52,35 @@ function Cart() {
         getCart()
     }, [])
 
+
+    const registerPatient = (e) => {
+        // e.preventDefault()
+        console.log(isAuthenticated())
+        if(isAuthenticated()) {
+            return history.push("/createPatient")
+        }
+        else {
+            let email = prompt("Enter Email")
+            let password = prompt("Enter Password")
+            console.log(email)
+            console.log(password)
+
+            if(email != "" && password != "") {
+                signin({email, password})
+                .then(data => {
+                    if(data.error) {
+                        console.log(data.error)
+                    } else {
+                        authenticate(data, () => {
+                            return history.push("/createPatient")
+                        })
+                    }
+                })
+                .catch(console.log("Signin request failed"))
+            }
+        }
+    }
+
     return (
         <div>
             <Header cartDetails={cartDetails} />
@@ -93,7 +123,7 @@ function Cart() {
                         <h3 className="font-semibold text-gray-600" >Total</h3>
                         <h3 className="font-bold text-gray-700" >&#8377;{cartDetails.totalPrice || '0'}</h3>
                     </div>
-                    <button onClick={() => history.push("/cart", cartDetails)} className="bg-red-500 text-white rounded-md p-2 mt-3" >View Cart</button>
+                    <button onClick={registerPatient} className="bg-red-500 text-white rounded-md p-2 mt-3" >Select Patient Details</button>
                 </div>
             </div>
         </div>
