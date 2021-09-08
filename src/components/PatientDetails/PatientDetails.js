@@ -13,8 +13,6 @@ const PatientDetails = () => {
         setAddress(optionSelect);
     }
 
-    const [disableBtn, setDisableBtn] = useState(true);
-
     const [addressAdd, setAddressAdd] = useState(false);
     console.log('address add : ', addressAdd);
     const [details, setDetails] = useState(false);

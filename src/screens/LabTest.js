@@ -2,8 +2,10 @@ import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import HealthPackages from '../components/AffordableHealthPackages/HealthPackages'
 import Banner from '../components/Banner'
+import PartnerLabs from '../components/CertifiedPartnerLabs/PartnerLabs'
 import Header from '../components/Header'
 import LabTestTabs from '../components/LabTestTabs'
+import SearchPackages from '../components/SearchedByYou/SearchPackages'
 
 function LabTest() {
     const history = useHistory();
@@ -40,9 +42,33 @@ function LabTest() {
                     />
                 </div>
 
-                {/* 1 September,2021
-             2nd day task */}
+                {/* 7th september task */}
+                <div className='container mx-auto my-20 pt-10 box-border'>
+                    <div className='sm:px-16 lg:px-16 text-lg sm:text-xl'>
+                        <h2 className='text-center sm:text-left text-gray-600 font-bold lg:ml-3'>
+                            Recently Searched By You
+                        </h2>
+                    </div>
+                    <SearchPackages />
+                </div>
 
+                <div className='container mx-auto my-20 pt-10 box-border'>
+                    <div className='flex flex-col sm:flex-row sm:justify-between sm:px-16 lg:px-16 text-lg sm:text-xl'>
+                        <h2 className='text-center sm:text-left text-gray-600 font-bold lg:ml-3'>
+                            Certified Partner Labs
+                        </h2>
+                        <div className='flex justify-center my-2 sm:my-0'>
+                            <Link to='/partner-labs'>
+                                <button className='text-red-600 font-bold hover:text-black'>
+                                    View all
+                                </button>
+                            </Link>
+                        </div>
+                    </div>
+                    <PartnerLabs />
+                </div>
+
+                {/* 1st September task */}
                 <div className='container mx-auto my-20 pt-10 box-border'>
                     <div className='flex flex-col sm:flex-row sm:justify-between sm:px-16 lg:px-16 text-lg sm:text-xl'>
                         <h2 className='text-center sm:text-left text-gray-600 font-bold lg:ml-3'>
