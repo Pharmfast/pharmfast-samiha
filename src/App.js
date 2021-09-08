@@ -10,9 +10,10 @@ import ProductPage from "./components/Products/ProductPage";
 import ProductDetailPage from "./components/Products/ProductDetailPage";
 import AllTests from "./components/LabTest/AllTests";
 import UploadPrescription from "./screens/UploadPrescription";
-import HealthPackages from "./components/AffordableHealthPackages/HealthPackages";
 import HealthCheckPackages from "./components/AffordableHealthPackages/HealthCheckPackages";
 import Cart from "./components/Cart/Cart";
+import CheckOut from "./components/PatientDetails/CheckOut";
+import PatientDetails from "./components/PatientDetails/PatientDetails";
 function App() {
   return (
     <div>
@@ -47,6 +48,12 @@ function App() {
           </Route>
           <Route path="/health-check-packages">
             <HealthCheckPackages />
+          </Route>
+          <Route path='/checkout'>
+            <CheckOut />
+          </Route>
+          <Route to='/select-patient-details'>
+            <PatientDetails />
           </Route>
           <Route exact path="/">
             <Login />

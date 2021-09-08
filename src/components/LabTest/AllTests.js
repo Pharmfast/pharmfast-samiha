@@ -6,7 +6,7 @@ import { BiCart } from 'react-icons/bi';
 import Drawer from "react-modern-drawer";
 import 'react-modern-drawer/dist/index.css';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { enterAlltest, selectAlltestId } from "../../features/allltestSlice";
 import Header from "../Header";
 import AllTestsComponent from './AllTestsComponent';
@@ -237,6 +237,10 @@ function AllTests() {
                     </div>
                 </Drawer>
             </div>
+
+            <Link to='/checkout'>
+                <button className='bg-red-600 text-white font-bold px-5 py-2 rounded m-3'>View Cart</button>
+            </Link>
         </div>
     )
 }
